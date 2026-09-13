@@ -83,6 +83,68 @@
             </div>
         </div>
 
+        <!-- Slide 1.5: WITHOUT vs WITH REACT QUERY -->
+        <div class="slide" id="slide-comparison">
+            <div class="content-wrapper">
+                <h1 class="slide-title">Why React Query? 🤔</h1>
+                <p class="subtitle step">Same feature. Two approaches.</p>
+
+                <div class="comparison-grid mt-4">
+                    <!-- WITHOUT -->
+                    <div class="comparison-panel step" style="border-color: var(--delete-color);">
+                        <div class="panel-label" style="background: var(--delete-color);">❌ Without React Query</div>
+                        <div class="code-window" style="max-width: 100%;">
+                            <div class="mac-buttons"><span></span><span></span><span></span></div>
+                            <pre><code>
+<span class="comment">// You manage EVERYTHING manually</span>
+const [services, setServices] = useState([]);
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
+
+useEffect(() => {
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/services");
+      const data = await res.json();
+      setServices(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchData();
+}, []);
+                            </code></pre>
+                        </div>
+                        <div class="line-count step" style="color: var(--delete-color); font-weight: 700;">~20 lines</div>
+                    </div>
+
+                    <!-- WITH -->
+                    <div class="comparison-panel step" style="border-color: var(--create-color);">
+                        <div class="panel-label" style="background: var(--create-color);">✅ With React Query</div>
+                        <div class="code-window" style="max-width: 100%;">
+                            <div class="mac-buttons"><span></span><span></span><span></span></div>
+                            <pre><code>
+<span class="comment">// React Query handles it all</span>
+const { data: services, isLoading, isError } = <span class="highlight-code">useQuery</span>({
+  queryKey: ["services"],
+  queryFn: () =>
+    fetch("/api/services").then(res => res.json())
+});
+                            </code></pre>
+                        </div>
+                        <div class="line-count step" style="color: var(--create-color); font-weight: 700;">~5 lines</div>
+                    </div>
+                </div>
+
+                <div class="info-box step mt-2" style="background: rgba(6, 182, 212, 0.15); border: 1px solid var(--cyan-bright); padding: 1rem 1.5rem; border-radius: 8px; font-size: 1.2rem;">
+                    <p>And that's just READ. Imagine UPDATE, DELETE, caching, retries, refetching… 🤯</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Slide 2: MENTAL MODEL -->
         <div class="slide" id="slide-recap">
             <div class="content-wrapper">
@@ -130,29 +192,22 @@
         <!-- Slide 2.5: THE ANALOGY -->
         <div class="slide" id="slide-analogy">
             <div class="content-wrapper">
-                <h1 class="slide-title">The Restaurant Analogy 🍽️</h1>
-                <p class="subtitle step">Let's ground this in reality.</p>
+                <h1 class="slide-title">The Grab Analogy 🚗</h1>
+                <p class="subtitle step">You already understand this pattern.</p>
                 
-                <div class="analogy-container mt-4">
-                    <div class="analogy-step step">
-                        <div class="icon-bounce">📖</div>
-                        <h3>useQuery<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(The Menu)</span></h3>
-                        <p>You sit down, and the waiter automatically hands you the menu. You don't have to ask.</p>
-                        <div class="badge read-bg" style="border: 1px solid var(--blue-bright);">Declarative</div>
+                <div class="analogy-container mt-4" style="justify-content: center;">
+                    <div class="analogy-step step" style="border-color: var(--blue-bright); max-width: 400px;">
+                        <div class="icon-bounce">📍</div>
+                        <h3>useQuery<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(Open the App)</span></h3>
+                        <p>You open Grab — nearby drivers <strong>automatically appear</strong> on your map. You didn't request them. They just show up.</p>
+                        <div class="badge read-bg" style="border: 1px solid var(--blue-bright);">Declarative (READ)</div>
                     </div>
                     
-                    <div class="analogy-step step">
-                        <div class="icon-pulse">🗣️</div>
-                        <h3>useMutation<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(The Order)</span></h3>
-                        <p>You actively call the waiter and give them your specific food order.</p>
-                        <div class="badge create-bg" style="border: 1px solid var(--create-color);">Imperative</div>
-                    </div>
-                    
-                    <div class="analogy-step step">
-                        <div class="icon-spin">🔄</div>
-                        <h3>invalidateQueries<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(The Sync)</span></h3>
-                        <p>The kitchen runs out of soup! The waiter instantly replaces your menu with an updated one.</p>
-                        <div class="badge update-bg" style="border: 1px solid var(--update-color);">Cache Update</div>
+                    <div class="analogy-step step" style="border-color: var(--create-color); max-width: 400px;">
+                        <div class="icon-pulse">🟢</div>
+                        <h3>useMutation<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(Tap "Book")</span></h3>
+                        <p>You tap <strong>"Pesan GrabCar"</strong>. Nothing happens until YOU press it. You command an action at that exact moment.</p>
+                        <div class="badge create-bg" style="border: 1px solid var(--create-color);">Imperative (WRITE)</div>
                     </div>
                 </div>
             </div>
@@ -209,15 +264,13 @@
                 <p class="subtitle step">Clone the repo from GitHub to get started.</p>
 
                 <div class="architecture-diagram mt-4">
-                    <div class="arch-node step">Dashboard (Page)</div>
+                    <div class="arch-node step">App.jsx</div>
                     <div class="arch-arrow step">↓</div>
                     <div class="flex-row">
                         <div class="arch-node step"
-                            style="background: rgba(59, 130, 246, 0.2); border-color: var(--blue-bright);">ServicesTable
-                            (Hardcoded)</div>
+                            style="background: rgba(59, 130, 246, 0.2); border-color: var(--blue-bright);">ServiceList.jsx</div>
                         <div class="arch-node step"
-                            style="background: rgba(16, 185, 129, 0.2); border-color: var(--create-color);">ServiceForm
-                            Modal</div>
+                            style="background: rgba(16, 185, 129, 0.2); border-color: var(--create-color);">ServiceForm.jsx</div>
                     </div>
                 </div>
 
@@ -495,7 +548,7 @@
     <!-- Navigation Controls -->
     <div class="controls">
         <button id="prev-btn" class="nav-btn" disabled>&larr;</button>
-        <div class="progress"><span id="current-slide">1</span> / 16</div>
+        <div class="progress"><span id="current-slide">1</span> / 17</div>
         <button id="next-btn" class="nav-btn">&rarr;</button>
     </div>
 
