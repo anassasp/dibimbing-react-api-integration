@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering CRUD with React Query</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="presentation-container">
+
+        <!-- Slide 0: INTRO -->
+        <div class="slide active" id="slide-intro">
+            <div class="content-wrapper">
+                <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+                    <img src="Anas.png" alt="Anas Sofyan Azhar Surya Putra"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--blue-bright);">
+                    <div>
+                        <h1 class="slide-title" style="margin-bottom: 0.5rem; text-align: left;">Hi, I'm Anas! 👋</h1>
+                        <p class="subtitle step" style="margin-top: 0; text-align: left;">Software Engineer & Mentor</p>
+                    </div>
+                </div>
+
+                <div class="practices-list mt-4">
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--blue-bright); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            💻</div>
+                        <div class="details">
+                            <h3>4+ Years Experience</h3>
+                            <div class="flow-mini">Enterprise web apps with React.js, Next.js, and Node.js.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--create-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            🏢</div>
+                        <div class="details">
+                            <h3>Current Role</h3>
+                            <div class="flow-mini">IT Development Specialist @ PT BNI Multifinance.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--update-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            🌱</div>
+                        <div class="details">
+                            <h3>Mentoring</h3>
+                            <div class="flow-mini">Passionate about teaching and mentoring junior developers!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 1: RECAP -->
+        <div class="slide" id="slide-recap-1">
+            <div class="content-wrapper">
+                <h1 class="slide-title">Last Session Recap ⏪</h1>
+                <p class="subtitle step">Before we build, let's remember our secret weapon.</p>
+                
+                <div class="practices-list mt-4">
+                    <div class="practice-card step">
+                        <div class="num" style="background: var(--blue-bright); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">1</div>
+                        <div class="details">
+                            <h3>React Query</h3>
+                            <div class="flow-mini">The industry standard for fetching and updating data.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num" style="background: var(--create-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">2</div>
+                        <div class="details">
+                            <h3>Loading & Errors</h3>
+                            <div class="flow-mini">Automatically managed by <code>isLoading</code> and <code>isError</code>.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: MENTAL MODEL -->
+        <div class="slide" id="slide-recap">
+            <div class="content-wrapper">
+                <h1 class="slide-title">React Query: Mental Model</h1>
+                <p class="subtitle step">Declarative vs Imperative Fetching</p>
+
+                <div class="practices-list mt-4">
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--blue-bright); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            Q</div>
+                        <div class="details">
+                            <h3>useQuery (Declarative)</h3>
+                            <div class="flow-mini">"I want this data." Used for <strong>READ</strong> (GET) operations.
+                                Loads automatically.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--create-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            M</div>
+                        <div class="details">
+                            <h3>useMutation (Imperative)</h3>
+                            <div class="flow-mini">"Do this action now." Used for <strong>CREATE, UPDATE,
+                                    DELETE</strong>. Triggered by you.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crud-grid wide mt-4">
+                    <div class="crud-row step">
+                        <div class="action-desc">Load Initial Table</div>
+                        <div class="arrow">→</div>
+                        <div class="method-blank">useQuery</div>
+                    </div>
+                    <div class="crud-row step">
+                        <div class="action-desc">Submit Forms / Click Delete</div>
+                        <div class="arrow">→</div>
+                        <div class="method-blank">useMutation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2.5: THE ANALOGY -->
+        <div class="slide" id="slide-analogy">
+            <div class="content-wrapper">
+                <h1 class="slide-title">The Restaurant Analogy 🍽️</h1>
+                <p class="subtitle step">Let's ground this in reality.</p>
+                
+                <div class="analogy-container mt-4">
+                    <div class="analogy-step step">
+                        <div class="icon-bounce">📖</div>
+                        <h3>useQuery<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(The Menu)</span></h3>
+                        <p>You sit down, and the waiter automatically hands you the menu. You don't have to ask.</p>
+                        <div class="badge read-bg" style="border: 1px solid var(--blue-bright);">Declarative</div>
+                    </div>
+                    
+                    <div class="analogy-step step">
+                        <div class="icon-pulse">🗣️</div>
+                        <h3>useMutation<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(The Order)</span></h3>
+                        <p>You actively call the waiter and give them your specific food order.</p>
+                        <div class="badge create-bg" style="border: 1px solid var(--create-color);">Imperative</div>
+                    </div>
+                    
+                    <div class="analogy-step step">
+                        <div class="icon-spin">🔄</div>
+                        <h3>invalidateQueries<br><span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">(The Sync)</span></h3>
+                        <p>The kitchen runs out of soup! The waiter instantly replaces your menu with an updated one.</p>
+                        <div class="badge update-bg" style="border: 1px solid var(--update-color);">Cache Update</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: THE MISSION -->
+        <div class="slide" id="slide-1">
+            <div class="content-wrapper">
+                <h1 class="slide-title">The Mission 🚀</h1>
+                <p class="subtitle step">Service Management Dashboard</p>
+
+                <div class="dashboard-mockup step mt-4">
+                    <div class="dashboard-header">
+                        <h2>Admin Dashboard</h2>
+                        <button class="btn-primary">+ Add Service</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="services-table">
+                            <thead>
+                                <tr>
+                                    <th>Service Name</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="step">
+                                    <td>Web Development</td>
+                                    <td>Rp 5.000.000</td>
+                                    <td>
+                                        <button class="btn-action edit">Edit</button>
+                                        <button class="btn-action delete">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr class="step">
+                                    <td>UI/UX Design</td>
+                                    <td>Rp 3.000.000</td>
+                                    <td>
+                                        <button class="btn-action edit">Edit</button>
+                                        <button class="btn-action delete">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: STARTER CODE -->
+        <div class="slide" id="slide-starter">
+            <div class="content-wrapper">
+                <h1 class="slide-title">The Starter Code 🛠</h1>
+                <p class="subtitle step">Clone the repo from GitHub to get started.</p>
+
+                <div class="architecture-diagram mt-4">
+                    <div class="arch-node step">Dashboard (Page)</div>
+                    <div class="arch-arrow step">↓</div>
+                    <div class="flex-row">
+                        <div class="arch-node step"
+                            style="background: rgba(59, 130, 246, 0.2); border-color: var(--blue-bright);">ServicesTable
+                            (Hardcoded)</div>
+                        <div class="arch-node step"
+                            style="background: rgba(16, 185, 129, 0.2); border-color: var(--create-color);">ServiceForm
+                            Modal</div>
+                    </div>
+                </div>
+
+                <div class="practices-list mt-4">
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--blue-bright); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            1</div>
+                        <div class="details">
+                            <h3>Explore the UI</h3>
+                            <div class="flow-mini">The static layout is already built for you.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--update-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            2</div>
+                        <div class="details">
+                            <h3>Wire it Up</h3>
+                            <div class="flow-mini">Our goal today is to replace local state with React Query.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: THE SETUP -->
+        <div class="slide" id="slide-2">
+            <div class="content-wrapper">
+                <h1 class="slide-title">The Setup (Dummy Data)</h1>
+                <p class="subtitle step">We'll interact with a Mock API.</p>
+
+                <div class="code-window step mt-4">
+                    <div class="mac-buttons"><span></span><span></span><span></span></div>
+                    <pre><code>
+<span class="step-code"><span class="comment">// JSON Server at http://localhost:3000/services</span></span>
+<span class="step-code">[</span>
+<span class="step-code">  {</span>
+<span class="step-code">    <span class="json-key">"id"</span>: <span class="json-value-num">1</span>,</span>
+<span class="step-code">    <span class="json-key">"name"</span>: <span class="json-value">"Web Development"</span>,</span>
+<span class="step-code">    <span class="json-key">"price"</span>: <span class="json-value-num">5000000</span></span>
+<span class="step-code">  }</span>
+<span class="step-code">]</span>
+                    </code></pre>
+                </div>
+
+                <div class="question-box step highlight mt-4">
+                    <h3>Notice the <code>id</code>? It is critical for UPDATE & DELETE!</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: READ -->
+        <div class="slide" id="slide-3">
+            <div class="content-wrapper">
+                <h1 class="slide-title">1. READ: Fetching Data</h1>
+                <p class="subtitle step">Let's populate our table using <code>useQuery</code>.</p>
+
+                <div class="code-window step mt-2">
+                    <div class="mac-buttons"><span></span><span></span><span></span></div>
+                    <pre><code>
+<span class="step-code">const fetchServices = async () => {</span>
+<span class="step-code">  const res = await fetch("http://localhost:3000/services");</span>
+<span class="step-code">  return res.json();</span>
+<span class="step-code">};</span>
+
+<span class="step-code mt-2">const { <span class="highlight-code">data</span>, <span class="highlight-code">isLoading</span>, <span class="highlight-code">isError</span> } = <span class="highlight-code">useQuery</span>({</span>
+<span class="step-code">  queryKey: ["services"],</span>
+<span class="step-code">  queryFn: fetchServices</span>
+<span class="step-code">});</span>
+                    </code></pre>
+                </div>
+                <div class="info-box step read-bg mt-2">
+                    <p>React Query handles all the state automatically!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: KNOWLEDGE CHECK -->
+        <div class="slide" id="slide-qna-1">
+            <div class="content-wrapper">
+                <h1 class="slide-title">Quick Knowledge Check 🧠</h1>
+                <p class="subtitle step">Let's see if you're following!</p>
+                
+                <div class="question-box mt-4">
+                    <h3>Why do we use <code>useQuery</code> to fetch the table, but <code>useMutation</code> to submit the form?</h3>
+                </div>
+                
+                <div class="answer-box step mt-4" style="background: rgba(16, 185, 129, 0.2); border: 2px solid var(--create-color); padding: 1.5rem; border-radius: 8px;">
+                    <p style="font-size: 1.5rem; margin: 0; color: white;">Because <strong>Queries</strong> run automatically when the component loads.<br><br>But <strong>Mutations</strong> only run when the user explicitly triggers them (like clicking a submit button)!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: CREATE -->
+        <div class="slide" id="slide-4">
+            <div class="content-wrapper">
+                <h1 class="slide-title">2. CREATE & UI UPDATE</h1>
+                <p class="subtitle step">How to POST and refresh the table instantly.</p>
+
+                <div class="code-window step mt-2">
+                    <div class="mac-buttons"><span></span><span></span><span></span></div>
+                    <pre><code>
+<span class="step-code">const createMutation = <span class="highlight-code">useMutation</span>({</span>
+<span class="step-code">  mutationFn: async (newService) => {</span>
+<span class="step-code">    await fetch("http://localhost:3000/services", {</span>
+<span class="step-code">      method: "POST",</span>
+<span class="step-code">      headers: { "Content-Type": "application/json" },</span>
+<span class="step-code">      body: JSON.stringify(newService)</span>
+<span class="step-code">    });</span>
+<span class="step-code">  },</span>
+<span class="step-code">  <span class="highlight-code">onSuccess: () => {</span></span>
+<span class="step-code">    <span class="comment">// 💥 THE MAGIC TRICK 💥</span></span>
+<span class="step-code">    <span class="highlight-code">queryClient.invalidateQueries(["services"]);</span></span>
+<span class="step-code">  <span class="highlight-code">}</span></span>
+<span class="step-code">});</span>
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: UPDATE - POPULATE FORM -->
+        <div class="slide" id="slide-5">
+            <div class="content-wrapper">
+                <h1 class="slide-title">3. UPDATE: The Edit Flow</h1>
+                <p class="subtitle step">Step 1: Put the existing data into the form.</p>
+
+                <div class="dashboard-mockup step mt-4" style="border: 2px solid var(--update-color);">
+                    <div class="edit-modal">
+                        <h3>Edit Service</h3>
+                        <input type="text" value="Web Development" class="form-input">
+                        <input type="number" value="5000000" class="form-input">
+                        <button class="btn-action edit">Save Changes</button>
+                    </div>
+                </div>
+
+                <div class="code-window step mt-4">
+                    <div class="mac-buttons"><span></span><span></span><span></span></div>
+                    <pre><code>
+<span class="step-code">const handleEditClick = (service) => {</span>
+<span class="step-code">  <span class="highlight-code">setSelectedId(service.id);</span></span>
+<span class="step-code">  <span class="highlight-code">setEditName(service.name);</span></span>
+<span class="step-code">  <span class="highlight-code">setEditPrice(service.price);</span></span>
+<span class="step-code">};</span>
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: UPDATE - SAVE CHANGES -->
+        <div class="slide" id="slide-6">
+            <div class="content-wrapper">
+                <h1 class="slide-title">3. UPDATE: Saving Changes</h1>
+                <p class="subtitle step">Step 2: Send PUT request and invalidate.</p>
+
+                <div class="code-window step mt-4">
+                    <div class="mac-buttons"><span></span><span></span><span></span></div>
+                    <pre><code>
+<span class="step-code">const updateMutation = <span class="highlight-code">useMutation</span>({</span>
+<span class="step-code">  mutationFn: async ({ id, updatedData }) => {</span>
+<span class="step-code">    await fetch(<span class="highlight-code">`http://localhost:3000/services/${id}`</span>, {</span>
+<span class="step-code">      method: "PUT",</span>
+<span class="step-code">      headers: { "Content-Type": "application/json" },</span>
+<span class="step-code">      body: JSON.stringify(updatedData)</span>
+<span class="step-code">    });</span>
+<span class="step-code">  },</span>
+<span class="step-code">  onSuccess: () => <span class="highlight-code">queryClient.invalidateQueries(["services"])</span></span>
+<span class="step-code">});</span>
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: DELETE -->
+        <div class="slide" id="slide-7">
+            <div class="content-wrapper">
+                <h1 class="slide-title">4. DELETE: Removing Data</h1>
+                <p class="subtitle step">Target the specific ID and destroy it.</p>
+
+                <div class="code-window step mt-4">
+                    <div class="mac-buttons"><span></span><span></span><span></span></div>
+                    <pre><code>
+<span class="step-code">const deleteMutation = <span class="highlight-code">useMutation</span>({</span>
+<span class="step-code">  mutationFn: async (<span class="highlight-code">id</span>) => {</span>
+<span class="step-code">    await fetch(<span class="highlight-code">`http://localhost:3000/services/${id}`</span>, {</span>
+<span class="step-code">      <span class="highlight-code">method: "DELETE"</span></span>
+<span class="step-code">    });</span>
+<span class="step-code">  },</span>
+<span class="step-code">  onSuccess: () => <span class="highlight-code">queryClient.invalidateQueries(["services"])</span></span>
+<span class="step-code">});</span>
+                    </code></pre>
+                </div>
+
+                <div class="info-box step delete-bg mt-4">
+                    <p>Notice we don't need a body for DELETE requests!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: TODAY'S RECAP -->
+        <div class="slide" id="slide-todays-recap">
+            <div class="content-wrapper">
+                <h1 class="slide-title">Today's Recap 📝</h1>
+                <p class="subtitle step">What we learned in this session.</p>
+                
+                <div class="practices-list mt-4">
+                    <div class="practice-card step">
+                        <div class="num" style="background: var(--blue-bright); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🔍</div>
+                        <div class="details">
+                            <h3>READ (useQuery)</h3>
+                            <div class="flow-mini">Fetch data declaratively. Loading and errors are handled for us.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num" style="background: var(--create-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⚡</div>
+                        <div class="details">
+                            <h3>WRITE (useMutation)</h3>
+                            <div class="flow-mini">Execute POST, PUT, and DELETE requests imperatively.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num" style="background: var(--update-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🔄</div>
+                        <div class="details">
+                            <h3>SYNC (invalidateQueries)</h3>
+                            <div class="flow-mini">The magic trick to automatically refresh the UI after a mutation.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: FINAL QNA -->
+        <div class="slide" id="slide-qna-2">
+            <div class="content-wrapper" style="text-align: center; justify-content: center; height: 100%; display: flex; flex-direction: column;">
+                <h1 class="slide-title" style="font-size: 5rem; text-align: center; margin-bottom: 1rem;">Q & A 🙋‍♂️</h1>
+                <p class="subtitle step" style="text-align: center; font-size: 2rem;">Any questions before we jump into the code?</p>
+            </div>
+        </div>
+
+        <!-- Slide 14: WRAP UP -->
+        <div class="slide" id="slide-10">
+            <div class="content-wrapper">
+                <h1 class="slide-title">Mission Accomplished 🎯</h1>
+                <p class="subtitle step">You've mastered CRUD with React Query!</p>
+
+                <div class="practices-list mt-4">
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--blue-bright); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            1</div>
+                        <div class="details">
+                            <h3>Declarative State</h3>
+                            <div class="flow-mini">No more manual loading and error variables.</div>
+                        </div>
+                    </div>
+                    <div class="practice-card step">
+                        <div class="num"
+                            style="background: var(--update-color); color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            2</div>
+                        <div class="details">
+                            <h3>Cache Invalidation</h3>
+                            <div class="flow-mini">UI updates instantly without messy local state hacks.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box step final-statement mt-4">
+                    <p>Time to code! It's your turn to wire it up.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="controls">
+        <button id="prev-btn" class="nav-btn" disabled>&larr;</button>
+        <div class="progress"><span id="current-slide">1</span> / 16</div>
+        <button id="next-btn" class="nav-btn">&rarr;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

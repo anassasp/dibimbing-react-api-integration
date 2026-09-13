@@ -1,0 +1,69 @@
+ANAS SOFYAN AZHAR SURYA PUTRA
+Central Jakarta, Indonesia | +628111114472 | anassasp99@gmail.com
+[linkedin.com/in/anas-putra]
+PROFILE SUMMARY
+Software Engineer with 4+ years of experience designing and building enterprise web applications using
+React.js, Next.js, Node.js, Express.js, PostgreSQL, and SQL Server. Experienced in software architecture,
+Micro Frontend, DevSecOps, secure software development (OWASP Top 10), and CI/CD. Proven track record
+of leading technical initiatives, mentoring developers, and delivering scalable systems in Agile environments.
+PROFESSIONAL EXPERIENCES
+IT DEVELOPMENT SPECIALIST (FULL STACK SOFTWARE ENGINEER) – PT BNI Multifinance
+(March 2023 – present) / South Jakarta
+• Working closely with business analysts, system analysts and users to design and build various web-based
+applications within agreed timelines using flowchart, activity diagram and architecture diagram.
+• Leading the implementation of automated dependency vulnerability scanning using OSV Scanner and Trivy
+across CI/CD pipelines and scheduled scans. Conducting proof-of-concept evaluations, benchmarking
+resource utilization, and authoring the Technical Design Document (TDD) covering implementation
+strategy, infrastructure impact, and risk assessment.
+• Architected and led the development of Micro Frontend architecture and incremental migration from
+monolith applications (Next.js), including the backend.
+• Architected and led the development of e-Catalogue system integrated with BNI Wondr app via iFrame,
+incorporating secure programming practices based on OWASP Top 10.
+• Developed a reusable Next.js starter template adopted by multiple internal projects, reducing project setup
+time.
+• Mentored three junior developers and interns, improving code quality and onboarding efficiency.
+• Built welcome pack delivery automation systems that improved operational cost efficiency by up to six
+times.
+• Received positive feedback from the manager for being able to accomplish a challenging project that faced
+abrupt requirement changes before deployment.
+Tech stacks: TypeScript, JavaScript, React.js, Next.js, Express.js, SQL Server, PostgreSQL, Docker, Redis,
+Kubernetes, AWS, Jenkins, Forgejo, Trivy, OSV Scanner
+FRONT-END SOFTWARE ENGINEER – PT Wide Technologies Indonesia (Health Division)
+(June 2021 – March 2023) / South Jakarta
+• Led and mentored the front-end team consisting of three members and helped the development part,
+including system design and deployment.
+• Performed research for the various tools and technologies that will be implemented on our websites.
+• Ensured website performance and applied best practices.
+• Participated in troubleshooting and bug fixing with both front-end and back-end team.
+• Developed a backend API module using the company's internal Spring Boot framework to integrate
+the Midtrans payment gateway.
+Tech stacks: TypeScript, React JS, Next JS, and Tailwind CSS
+FRONT-END WEB DEVELOPER – Aitindo
+(December 2021 – June 2022) / Remote
+• Developed and maintained high-quality various reputable client websites, including Frisian Flag JD Sport
+Indonesia, Neozep, and Pervetti van Melle.
+• Served as the sole Front-end Developer on the project, delivering assigned features within project
+timelines.
+• Ensured browser compatibility and applied best practices.
+• Participated in troubleshooting and bug fixing, and revamped sites throughout production life cycles.
+• Successfully enhanced client’s website performances up to 125 percent (based on Lighthouse)
+Tech stacks: React JS, Next JS, and Tailwind CSS
+TECHNICAL SKILLS
+• Languages & Frameworks: React.js, Next.js, Node.js, Express.js, Module Federation, Tailwind CSS
+• Databases: PostgreSQL, SQL Server, Redis, Redshift
+• Cloud & DevOps: Docker, Kubernetes, Jenkins, Git, AWS, Forgejo
+• Security & DevSecOps: Trivy, OSV Scanner, OWASP Top 10, Secure SDLC, Vulnerability Management
+• Other: Agile, SDLC, UML, OWASP Secure Programming, Quicksight, AWS Glue
+EDUCATION
+• Master’s degree in management information systems – Gunadarma University, Indonesia (2019–2021) |
+Full Scholarship (Sarjana Magister)
+• International Exchange Program – University of Borås, Sweden (Aug 2019 – Jan 2020) | Linnaeus-Palme
+Programme
+• Bachelor’s degree in informatics engineering – Gunadarma University, Indonesia (2015–2019) | GPA: 3.9
+| Dean’s List Award (2015/2016)
+CERTIFICATES
+• Coursera: Front-End Web Development with React, AWS Cloud Technical Essentials
+• Cisco: CCNA – Introduction to Networks & Switching, Routing, and Wireless Essentials
+• Udemy: Build a To-Do List App with Node, Express, React and MongoDB
+• freeCodeCamp: Responsive Web Design, JavaScript Algorithms and Data Structures, Front-End
+Development Libraries (React, Redux, Bootstrap, jQuery, SASS)
